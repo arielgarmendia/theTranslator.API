@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using theTranslator.API.Model;
+using theTranslator.Service;
+using theTranslator.Service.Model;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace theTranslator.API.Controllers
 {
@@ -16,11 +19,13 @@ namespace theTranslator.API.Controllers
         }
 
         [Route("/Translate")]
-        [HttpPost]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        public String Post([FromBody] RequestModel request)
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] RequestModel request)
         {
-            return "Nothing to translate yet.";
+            return new JsonResult(new
+            {
+                Message = await Translate.ExecuteAsync(request)
+            });
         }
     }
 }

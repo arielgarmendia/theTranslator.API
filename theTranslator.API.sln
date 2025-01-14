@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theTranslator.API", "theTranslator.API.csproj", "{5BA3DD6D-E1AB-47D9-BA4D-DC927B7D36FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "theTranslator.API", "theTranslator.API.csproj", "{5BA3DD6D-E1AB-47D9-BA4D-DC927B7D36FC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{910B4A92-6357-41C4-950E-91E6D876B292} = {910B4A92-6357-41C4-950E-91E6D876B292}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theTranslator.Google.Translate", "..\theTranslator.Google.Translate\theTranslator.Google.Translate.csproj", "{AB097F7E-5962-4EF8-A8FD-F7A6D26E1439}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "theTranslator.Service", "..\theTranslator.Service\theTranslator.Service.csproj", "{910B4A92-6357-41C4-950E-91E6D876B292}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AB097F7E-5962-4EF8-A8FD-F7A6D26E1439} = {AB097F7E-5962-4EF8-A8FD-F7A6D26E1439}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,14 @@ Global
 		{5BA3DD6D-E1AB-47D9-BA4D-DC927B7D36FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BA3DD6D-E1AB-47D9-BA4D-DC927B7D36FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BA3DD6D-E1AB-47D9-BA4D-DC927B7D36FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB097F7E-5962-4EF8-A8FD-F7A6D26E1439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB097F7E-5962-4EF8-A8FD-F7A6D26E1439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB097F7E-5962-4EF8-A8FD-F7A6D26E1439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB097F7E-5962-4EF8-A8FD-F7A6D26E1439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{910B4A92-6357-41C4-950E-91E6D876B292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{910B4A92-6357-41C4-950E-91E6D876B292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{910B4A92-6357-41C4-950E-91E6D876B292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{910B4A92-6357-41C4-950E-91E6D876B292}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
