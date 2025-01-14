@@ -7,9 +7,7 @@ namespace theTranslator.Service
     {
         public async static Task<string> ExecuteAsync(RequestModel request)
         {
-            var translator = new GoogleTranslator();
-
-            return await translator.TranslateAsync(request.TextToTranslate, request.DestinationLanguage, request.SourceLanguage);
+            return await GoogleTranslatorPythonNet.TranslateAsync(request.TextToTranslate, request.DestinationLanguage, request.SourceLanguage);
         }
     }
 }

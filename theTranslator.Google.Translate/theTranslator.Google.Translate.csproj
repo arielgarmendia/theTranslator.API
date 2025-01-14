@@ -6,4 +6,25 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<None Include="$(ProjectDir)PythonCode\**" CopyToOutputDirectory="Always" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="D:\Development\TravelGoSystems\theTranslator\theTranslator.API\theTranslator.Google.Translate\GoogleTranslator.py">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="IronPython" Version="3.4.2" />
+	  <PackageReference Include="IronPython.StdLib" Version="3.4.2" />
+	  <PackageReference Include="Python.Included" Version="3.11.6" />
+	</ItemGroup>
+
+
 </Project>
