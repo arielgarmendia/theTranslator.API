@@ -7,7 +7,13 @@ namespace theTranslator.Service
     {
         public async static Task<string> ExecuteAsync(RequestModel request)
         {
-            return await GoogleTranslatorPythonNet.TranslateAsync(request.TextToTranslate, request.DestinationLanguage, request.SourceLanguage);
+            switch (request.TranslationService)
+            {
+                case TranslationServices.GoogleTranslate:
+                    return await GoogleTranslatorPythonNet.TranslateAsync(request.TextToTranslate, request.DestinationLanguage, request.SourceLanguage);
+                default:
+                    return "Error: Translation Service needs to be provided.";
+            }            
         }
     }
 }
