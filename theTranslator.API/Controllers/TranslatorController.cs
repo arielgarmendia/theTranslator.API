@@ -1,12 +1,12 @@
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
+using theTranslator.API.Model;
 using theTranslator.Service;
-using theTranslator.Service.Model;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace theTranslator.API.Controllers
 {
+    /// <summary>
+    /// Main controller to access translation endpoints.
+    /// </summary>
     [ApiController]
     [Route("api/translator")]
     public class TranslatorController : ControllerBase
@@ -18,13 +18,17 @@ namespace theTranslator.API.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Translates a text using a source language and a target language.
+        /// </summary>
+        /// <returns>The translated text in target language.</returns>
         [Route("/Translate")]
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] RequestModel request)
         {
             return new JsonResult(new
             {
-                Message = await Translate.ExecuteAsync(request)
+                Message = await Translate.ExecuteAsync(request.TextToTranslate, request.DestinationLanguage, request.SourceLanguage, (int)request.TranslationService)
             });
         }
     }

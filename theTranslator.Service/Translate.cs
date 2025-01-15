@@ -1,16 +1,15 @@
 ﻿using theTranslator.Google.Translate;
-using theTranslator.Service.Model;
 
 namespace theTranslator.Service
 {
     public static class Translate
     {
-        public async static Task<string> ExecuteAsync(RequestModel request)
+        public async static Task<string> ExecuteAsync(string TextToTranslate, string DestinationLanguage, string SourceLanguage, int TranslationService = 1)
         {
-            switch (request.TranslationService)
+            switch (TranslationService)
             {
-                case TranslationServices.GoogleTranslate:
-                    return await GoogleTranslatorPythonNet.TranslateAsync(request.TextToTranslate, request.DestinationLanguage, request.SourceLanguage);
+                case 1:
+                    return await GoogleTranslatorPythonNet.TranslateAsync(TextToTranslate, DestinationLanguage, SourceLanguage);
                 default:
                     return "Error: Translation Service needs to be provided.";
             }            

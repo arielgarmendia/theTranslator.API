@@ -9,7 +9,7 @@ Repo for dockerised ***theTranslator.API*** project
 ### Description
 
 - *.Net 8 RESTful WebAPI*.
-- Docummented using *Swagger*, default landing page when executed.
+- Docummented using *Swagger* and *OpenAPI*, default landing page when executed.
 - *WebAPI* app has a fixed https port value assigned, to allow *CORS* operations between 2 domain separated apps: Web app and this *API* service.
 - *Docker* container configured for *Windows OS*, to make it simpler.
 - Single async *GET* entry endpoint to perform the translation process.
