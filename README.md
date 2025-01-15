@@ -22,7 +22,7 @@ Repo for dockerised ***theTranslator.API*** project
     - Default now is *Google Translate*.
     - This project could be designed as a *Nuget* package, maintaining a single point for future translation integration services.
 
-### Execution
+### Execution Plan
 
 - Clone the repository in your local machine.
 - Open solution with *Visual Studio*.
