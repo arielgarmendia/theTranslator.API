@@ -1,4 +1,4 @@
-# theTranslator.API
+Ôªø# theTranslator.API
 Repo for dockerised ***theTranslator.API*** project
 
 ### Requirements
@@ -35,23 +35,23 @@ Repo for dockerised ***theTranslator.API*** project
 
 - ***theTranslator.Google.Translate*** project/layer:
     - Here is where everything happens.
-    - I¥ve kept aligned to the idea of using the suggested *Python library*.
+    - I¬¥ve kept aligned to the idea of using the suggested *Python library*.
     - Using the *Google Translate API* requires an access token, so this will be avoided.
     - First approach:
         - Convert the *Python* source code to *C#* code.
-        - This was succesfull but when trying to use the generated code, I had connection issues, so I assumed that conversion wasm¥t good enough.
+        - This was succesfull but when trying to use the generated code, I had connection issues, so I assumed that conversion wasm¬¥t good enough.
     - Second approach:
         - Combine *C#* code and *Python* code in the same *.Net* project, so we have also multilanguage processing, *.Net* framework accessing and executing *Python* code: 
             - First approach:
                 - Use of *IronPython Nuget* package.
-                - I¥ve managed to call the Python code, but started having a *module not found* error.
-                - The lack of *Python¥s "requests"* module was the main cause of failure.
+                - I¬¥ve managed to call the Python code, but started having a *module not found* error.
+                - The lack of *Python¬¥s "requests"* module was the main cause of failure.
                 - *IronPython* only processes few standard *Python* modules and *"requests"* is not one of the provided in the implementation.
                 - *theTranslator.Google.Translator/GoogleTranslatorIronPython.cs* is the example of this failed attempt.
-                - I¥ve kept it in the project as an example of a possible implementation.
+                - I¬¥ve kept it in the project as an example of a possible implementation.
             - Second approach:
                 - Use of *Python.Included Nuget* package.
-                - This package allows us to use another implementation called *Python.Net* which uses *Python¥s* full framework.
+                - This package allows us to use another implementation called *Python.Net* which uses *Python¬¥s* full framework.
                 - Using *Python.Included Nuget* allows us to download modules on demand, see *theTranslator.API/Included/PythonLibraries.cs**, called at *WebAPI* startup/program entry point.
                 
                 ```csharp
@@ -75,7 +75,7 @@ Repo for dockerised ***theTranslator.API*** project
                 - This allows us to one-time download the modules used in *theTranslator.Google.Translator/GoogleTranslator.py* implementation.
                 - See *theTranslator.Google.Translator/GoogleTranslatorPythonNet.cs* for the translation process using *Python.Included* and *Python.Net*
                 - This approach works, but not as well as we desire.
-                - **Problem**: I¥ve managed to only make two translations using the *Web** app connecting to the *WebAPI*. At third attempt the *Python* code, called from *.Net* stops working, no response. I suspect there¥s a problem when accessing *Google Tranlate* from an unofficial implementation.
+                - **Problem**: I¬¥ve managed to only make two translations using the *Web** app connecting to the *WebAPI*. At third attempt the *Python* code, called from *.Net* stops working, no response. I suspect there¬¥s a problem when accessing *Google Tranlate* from an unofficial implementation.
 
                 ```csharp
                 dynamic GoogleTranslatorModule = Py.Import("GoogleTranslator");
@@ -83,3 +83,7 @@ Repo for dockerised ***theTranslator.API*** project
 
                 return PyGoogleTranslator.translate(text, langTgt, langSrc);
                 ```
+        - Third approach:
+            - Maybe there¬¥s a third option here, who knows...
+            
+              (‚åê‚ñ†_‚ñ†)
