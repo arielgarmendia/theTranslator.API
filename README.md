@@ -14,9 +14,11 @@ Repo for dockerised ***theTranslator.API*** project
 - *Docker* container configured for *Windows OS*, to make it simpler.
 - Single async *GET* entry endpoint to perform the translation process.
 ```csharp
+
     [Route("/Translate")]
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] RequestModel request)
+
 ```
 - ***theTranslator.Service*** project/layer acts as a translation integration service selector, allowing multiple translator integrations:
     - Default now is *Google Translate*.
@@ -52,9 +54,9 @@ Repo for dockerised ***theTranslator.API*** project
             - Second approach:
                 - Use of *Python.Included Nuget* package.
                 - This package allows us to use another implementation called *Python.Net* which uses *Python´s* full framework.
-                - Using *Python.Included Nuget* allows us to download modules on demand, see *theTranslator.API/Included/PythonLibraries.cs**, called at *WebAPI* startup/program entry point.
-                
+                - Using *Python.Included Nuget* allows us to download modules on demand, see *theTranslator.API/Included/PythonLibraries.cs**, called at *WebAPI* startup/program entry point.                
                 ```csharp
+
                 // install in local directory
                 Installer.InstallPath = Path.GetFullPath(".");
 
@@ -71,17 +73,19 @@ Repo for dockerised ***theTranslator.API*** project
                 await Installer.PipInstallModule("urllib");
                 await Installer.PipInstallModule("urllib3");
                 await Installer.PipInstallModule("logging");
+
                 ```
                 - This allows us to one-time download the modules used in *theTranslator.Google.Translator/GoogleTranslator.py* implementation.
                 - See *theTranslator.Google.Translator/GoogleTranslatorPythonNet.cs* for the translation process using *Python.Included* and *Python.Net*
                 - This approach works, but not as well as we desire.
                 - **Problem**: I´ve managed to only make two translations using the *Web** app connecting to the *WebAPI*. At third attempt the *Python* code, called from *.Net* stops working, no response. I suspect there´s a problem when accessing *Google Tranlate* from an unofficial implementation.
-
                 ```csharp
+
                 dynamic GoogleTranslatorModule = Py.Import("GoogleTranslator");
                 dynamic PyGoogleTranslator = GoogleTranslatorModule.google_translator();
 
                 return PyGoogleTranslator.translate(text, langTgt, langSrc);
+
                 ```
         - Third approach:
             - Maybe there´s a third option here, who knows...
